@@ -95,4 +95,12 @@ insert into aluno values(12345,'Fulano de Tal','ADS'),
 set sql_safe_updates=0;
 
 delete from curso where cod='ADS';
+/*Eliminar a chave estrangeira da tabela aluno*/
+alter table aluno drop foreign key fk_aluno_curso;
+
+/*Criando a chave estrangeira com on delete cascade e on update cascade*/
+alter table anuno add constraint fk_aluno_curso foreign key(codcurso)
+references curso(cod) on delete cascade on update cascade;
+
+delete from curso where cod='ADS';
 
